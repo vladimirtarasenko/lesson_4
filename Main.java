@@ -1,20 +1,32 @@
 package itacademy_lesson4;
 
-import java.util.Arrays;
+
 import java.util.Scanner;
 
-public class Main {
+    class NewsPages {
 	static Scanner scanner = new Scanner(System.in);
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		PatientContainer patients = new PatientContainer();
-		for(int i=0; i<3; i++) {
-			Patient patient= new Patient();
-			patient.inputPatientInfo();
-			patients.patientList.add(patient);
+	public int pageN;
+	public int newsNumber;
+	// Определение количества страниц;
+	public int pageNumber(int newsNumber) {
+		pageN=newsNumber/10;
+		if(newsNumber%10!=0) {
+			pageN=pageN+1;}
+					return pageN;
 		}
-		System.out.println("Введите имя пациента для поиска информации");
-		patients.showPatientsInfoByName(scanner.nextLine());
+	// Ввод количества новостей;
+	public int getNewsNumber() {
+		System.out.println("Введите количество новостей");
+		newsNumber=scanner.nextInt();
+		return newsNumber;
 	}
 }
+
+public class Main {
+	public static void main(String[] args) {	
+		NewsPages pages= new NewsPages();		
+		int f=pages.pageNumber(pages.getNewsNumber());				
+			System.out.println("Требуемое количество страниц - "+f);
+		}		
+	}
+
